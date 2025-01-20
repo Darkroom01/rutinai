@@ -1,10 +1,10 @@
 import React from "react";
-import TestComponent from "./components/TestComponent";
+import MainPage from "./pages/MainPage"; // MainPage 컴포넌트 임포트
 
 function App() {
     return (
         <div className="App">
-            <TestComponent /> {/* MainPage 컴포넌트 렌더링 */}
+            <MainPage /> {/* MainPage 컴포넌트 렌더링 */}
         </div>
     );
 }

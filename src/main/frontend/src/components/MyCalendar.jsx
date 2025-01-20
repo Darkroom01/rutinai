@@ -6,6 +6,7 @@ function MyCalendar() {
     const [value, setValue] = useState(new Date());
 
     const handleChange = (date) => {
+        console.log("Selected Date: ", date); // 선택된 날짜를 로그로 확인
         setValue(date);
     };
 
