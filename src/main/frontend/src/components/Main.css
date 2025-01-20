@@ -1,24 +1,115 @@
-.main-page {
-    text-align: center;
-    background-color: #F2F8FF;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+/* 기본 html, body 스타일 */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;  /* 화면 전체를 사용할 수 있도록 */
 }
 
+/* 전체 페이지 스타일 */
+.main-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* 수직 중앙 정렬 */
+    align-items: center;  /* 수평 중앙 정렬 */
+    background-color: #EAF4FF;  /* 부드러운 배경색 */
+    height: 100vh;  /* 전체 화면 높이 */
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;  /* 기본 폰트 */
+}
+
+/* 설명 텍스트 스타일 */
+.description-text {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;  /* 가운데 정렬 */
+    max-width: 80%;  /* 텍스트가 너무 길어지지 않게 */
+}
+
+/* 로그인, 회원가입 버튼 컨테이너 (오른쪽 상단에 배치) */
+.button-container {
+    position: absolute;  /* 절대 위치 */
+    top: 20px;  /* 상단에 20px 여백 */
+    right: 20px;  /* 오른쪽 끝에 배치 */
+}
+
+/* 버튼 스타일 */
 .main-page button {
-    margin: 10px;
-    padding: 10px 20px;
+    margin: 5px;
+    padding: 12px 25px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #6B8CFF, #4CAF50);  /* 그라디언트 배경 */
     color: white;
     border: none;
     border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* 부드러운 그림자 */
+    transition: all 0.3s ease;
 }
 
+/* 버튼 호버 스타일 */
 .main-page button:hover {
-    background-color: #45a049;
+    background: linear-gradient(135deg, #4CAF50, #6B8CFF);  /* 호버 시 색상 변경 */
+    transform: translateY(-2px);  /* 호버 시 살짝 올라가는 효과 */
+}
+
+/* 4개의 그림을 가로로 나란히 배치 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* 그림 간 간격 */
+    margin-bottom: 30px;
+}
+
+/* 각 그림 스타일 */
+.image-container img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;  /* 둥근 모서리 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* 부드러운 그림자 */
+}
+
+/* 왼쪽 정렬된 텍스트 */
+.text-left {
+    text-align: left;
+    width: 100%;
+    padding-left: 30px;  /* 왼쪽 여백 */
+    font-size: 16px;
+    color: #555;
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+/* 로고 이미지 스타일 */
+.logo-image {
+    width: 250px;  /* 로고 크기 */
+    height: auto;
+    margin-bottom: 20px;  /* 로고와 설명 텍스트 사이 여백 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* 부드러운 그림자 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .description-text {
+        font-size: 18px;
+    }
+
+    .main-page button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .logo-image {
+        width: 180px;
+    }
 }
