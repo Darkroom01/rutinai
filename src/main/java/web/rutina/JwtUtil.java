@@ -11,8 +11,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String secretKey = "your_secret_key";
-
+    private final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256); // 랜덤 비밀 키 생
     public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)

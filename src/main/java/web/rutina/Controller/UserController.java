@@ -16,7 +16,7 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
-    /**
+    /** localhost:8080/api/user/signup
      * 회원가입 API
      */
     @PostMapping("/signup")

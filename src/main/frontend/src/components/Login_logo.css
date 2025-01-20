@@ -1,0 +1,56 @@
+/* 전체 페이지 스타일 */
+.login-page {
+    text-align: center;
+    background-color: #F2F8FF;  /* 배경색 설정 */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 로고 이미지 스타일 */
+.logo-image {
+    width: 150px;  /* 로고 크기 조정 */
+    height: auto;
+    margin-bottom: 20px;  /* 로고와 텍스트 사이에 여백 */
+}
+
+/* 로그인 폼 스타일 */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 입력 필드 스타일 */
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* 로그인 버튼 스타일 */
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 버튼 hover 효과 */
+.login-form button:hover {
+    background-color: #0056b3;
+}
