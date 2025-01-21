@@ -10,6 +10,7 @@ const MainPage = () => {
     const [wakeTime, setWakeTime] = useState("07:00");
     const [sleepTime, setSleepTime] = useState("22:00");
     const [scheduleText, setScheduleText] = useState(""); // 전체 텍스트로 저장
+    const [scheduleList, setScheduleList] = useState([]); // 리스트로 저장
     const [currentTime, setCurrentTime] = useState(new Date());
 
     const addSchedule = (schedule) => {
@@ -32,8 +33,15 @@ const MainPage = () => {
                 `http://localhost:8080/api/schedule/generate/${encodeURIComponent(wakeTime)}/${encodeURIComponent(sleepTime)}/${encodeURIComponent(tasks)}`
             );
 
-            // API 응답 전체를 상태로 저장
-            setScheduleText(response.data.trim());
+            const rawText = response.data.trim();
+            setScheduleText(rawText); // 전체 텍스트 저장
+
+            // 텍스트를 줄 단위로 분리하여 리스트에 저장
+            const parsedList = rawText.split("\n").map((line) => {
+                const [time, ...taskParts] = line.split(" - ");
+                return { time: time.trim(), task: taskParts.join(" - ").trim() };
+            });
+            setScheduleList(parsedList);
         } catch (error) {
             console.error("스케줄 생성 중 오류 발생:", error);
         }
@@ -69,8 +77,15 @@ const MainPage = () => {
             <main className="content">
                 <h2>Today {selectedDate.toLocaleDateString()}</h2>
                 <h1>{currentTime.toLocaleTimeString()}</h1> {/* 현재 시간 표시 */}
+
                 <div className="schedule-output">
-                    <pre>{scheduleText}</pre> {/* 전체 텍스트 출력 */}
+                    <h3>Your Schedule</h3>
+                    {scheduleList.map((item, index) => (
+                        <div key={index} className="schedule-card">
+                            <span className="task-time">{item.time}</span>
+                            <span className="task-name">{item.task}</span>
+                        </div>
+                    ))}
                 </div>
             </main>
             <aside className="todo-sidebar">

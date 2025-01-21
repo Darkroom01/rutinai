@@ -118,3 +118,54 @@ button {
 button:hover {
     background-color: #357ab8;
 }
+
+/* Schedule Output 스타일 */
+.schedule-output {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.schedule-output pre {
+    margin: 0;
+    white-space: pre-wrap; /* 줄바꿈 허용 */
+    word-wrap: break-word; /* 단어 분리 */
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* 카드 스타일 */
+.schedule-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.schedule-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Task 제목 스타일 */
+.schedule-card .task-name {
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+/* Task 시간 스타일 */
+.schedule-card .task-time {
+    font-size: 0.9rem;
+    color: #777;
+}
