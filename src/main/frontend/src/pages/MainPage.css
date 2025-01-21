@@ -1,0 +1,120 @@
+/* src/main/frontend/src/pages/MainPage.css */
+
+/* Calendar 기본 스타일 복구 및 사용자 정의 */
+.react-calendar {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    line-height: 1.125em;
+}
+
+
+/* 상단 년도와 월 선택 부분 */
+.react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333; /* 검정 글씨 */
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.react-calendar__navigation button {
+    color: #333; /* 화살표 버튼 글씨 색상 */
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.react-calendar__navigation button:disabled {
+    color: #ccc; /* 비활성화된 버튼 색상 */
+}
+
+
+.react-calendar__tile {
+    color: #333; /* 기본 날짜 색상 */
+    background: none;
+}
+
+.react-calendar__tile--now {
+    background: #4a90e2; /* 현재 날짜 배경 */
+    color: white; /* 현재 날짜 글자색 */
+    border-radius: 5px;
+}
+
+.react-calendar__tile--active {
+    background: #357ab8; /* 선택된 날짜 배경 */
+    color: white; /* 선택된 날짜 글자색 */
+    border-radius: 5px;
+}
+
+.react-calendar__tile:hover {
+    background-color: #e3f2fd; /* 호버 시 배경색 */
+    color: #333; /* 호버 시 글자색 */
+}
+
+.react-calendar__tile--disabled {
+    color: #d3d3d3;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    height: 100vh;
+    padding: 20px;
+    background-color: lightsteelblue;
+}
+
+.sidebar, .todo-sidebar {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.time-inputs label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="time"] {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #357ab8;
+}
