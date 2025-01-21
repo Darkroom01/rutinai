@@ -1,45 +1,44 @@
 // src/main/frontend/src/components/TimeTable.js
-import React, { useState } from "react";
+import React from "react";
 
-const TimeTable = ({ wakeTime, sleepTime }) => {
-    const [timeTable, setTimeTable] = useState([]);
+const TimeTable = ({ schedules, wakeTime, sleepTime }) => {
+    const formatTime = (hour, minute) =>
+        `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 
-    React.useEffect(() => {
-        const generateTimeTable = () => {
-            const wakeHour = parseInt(wakeTime.split(":")[0], 10);
-            const wakeMinute = parseInt(wakeTime.split(":")[1], 10);
-            const sleepHour = parseInt(sleepTime.split(":")[0], 10);
-            const sleepMinute = parseInt(sleepTime.split(":")[1], 10);
+    const calculateTimeTable = () => {
+        const wakeHour = parseInt(wakeTime.split(":")[0], 10);
+        const wakeMinute = parseInt(wakeTime.split(":")[1], 10);
+        const sleepHour = parseInt(sleepTime.split(":")[0], 10);
+        const sleepMinute = parseInt(sleepTime.split(":")[1], 10);
 
-            const times = [];
-            let currentHour = wakeHour;
-            let currentMinute = wakeMinute;
+        const timetable = [];
+        let currentHour = wakeHour;
+        let currentMinute = wakeMinute;
 
-            while (
+        for (const { name, duration } of schedules) {
+            if (
                 currentHour < sleepHour ||
                 (currentHour === sleepHour && currentMinute < sleepMinute)
-                ) {
-                times.push(
-                    `${String(currentHour).padStart(2, "0")}:${String(
-                        currentMinute
-                    ).padStart(2, "0")}`
+            ) {
+                timetable.push(
+                    `${formatTime(currentHour, currentMinute)} - ${name} (${duration}h)`
                 );
-                currentHour += currentMinute + 60 >= 60 ? 1 : 0;
-                currentMinute = (currentMinute + 60) % 60;
+                currentHour += duration;
+                if (currentHour >= sleepHour) break;
             }
+        }
 
-            setTimeTable(times);
-        };
+        return timetable;
+    };
 
-        generateTimeTable();
-    }, [wakeTime, sleepTime]);
+    const timeTable = calculateTimeTable();
 
     return (
         <div>
             <h3>Time Table</h3>
             <ul>
-                {timeTable.map((time, index) => (
-                    <li key={index}>{time}</li>
+                {timeTable.map((entry, index) => (
+                    <li key={index}>{entry}</li>
                 ))}
             </ul>
         </div>

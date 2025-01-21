@@ -1,40 +1,59 @@
 // src/main/frontend/src/components/ToDoList.js
 import React, { useState } from "react";
 
-const ToDoList = () => {
-    const [todos, setTodos] = useState([]);
-    const [newTodo, setNewTodo] = useState("");
+const ToDoList = ({ addSchedule }) => {
+    const [taskName, setTaskName] = useState("");
+    const [duration, setDuration] = useState("");
+    const [tasks, setTasks] = useState([]);
 
-    const addTodo = () => {
-        if (newTodo.trim() !== "") {
-            setTodos([...todos, newTodo]);
-            setNewTodo("");
+    const handleAdd = () => {
+        if (taskName.trim() !== "" && duration > 0) {
+            const newTask = { name: taskName, duration: parseInt(duration, 10), checked: false };
+            setTasks([...tasks, newTask]); // ToDoList 내부에도 추가
+            addSchedule(newTask); // 상위 컴포넌트로 전달
+            setTaskName("");
+            setDuration("");
         }
     };
 
-    const removeTodo = (index) => {
-        const updatedTodos = todos.filter((_, i) => i !== index);
-        setTodos(updatedTodos);
+    const toggleTask = (index) => {
+        const updatedTasks = tasks.map((task, i) =>
+            i === index ? { ...task, checked: !task.checked } : task
+        );
+        setTasks(updatedTasks);
     };
 
     return (
         <div>
             <h3>To Do List</h3>
             <ul>
-                {todos.map((todo, index) => (
+                {tasks.map((task, index) => (
                     <li key={index}>
-                        {todo}{" "}
-                        <button onClick={() => removeTodo(index)}>Delete</button>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={task.checked}
+                                onChange={() => toggleTask(index)}
+                            />
+                            {task.name} ({task.duration}h)
+                        </label>
                     </li>
                 ))}
             </ul>
             <input
                 type="text"
-                value={newTodo}
-                onChange={(e) => setNewTodo(e.target.value)}
-                placeholder="Add a new task"
+                value={taskName}
+                onChange={(e) => setTaskName(e.target.value)}
+                placeholder="Task Name"
             />
-            <button onClick={addTodo}>Add</button>
+            <input
+                type="number"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+                placeholder="Duration (hours)"
+                min="1"
+            />
+            <button onClick={handleAdd}>Add Task</button>
         </div>
     );
 };
